@@ -1,4 +1,5 @@
 import java.io.*;
+import java.math.BigInteger;
 import java.net.*;
 
 public class RandomNumbers {
@@ -65,8 +66,11 @@ public class RandomNumbers {
     }
 
     public static void main(String[] args) throws IOException {
-        String[] vals = { "100", "101", "1024" };
+        String[] vals = { "75", "11", "750" };
         int[] primes = getPrimes(vals);
-        System.out.println(primes[0] + " " + primes[1]);
+        
+        RSAImpl RSA = new RSAImpl(Integer.toString(primes[0]), Integer.toString(primes[1]));
+        System.out.println("Your Public Key is: " + RSA.getExp());
+        System.out.println("Your Private Key is: " + RSA.getD());
     }
 }
