@@ -1,5 +1,4 @@
 import java.io.*;
-import java.math.BigInteger;
 import java.net.*;
 
 public class RandomNumbers {
@@ -15,7 +14,7 @@ public class RandomNumbers {
         String line;
 
         while ((line = reader.readLine()) != null) {
-            str.append(line + " "); // puts spaces between the stream of numbers
+            str.append(line + " ");
         }
 
         reader.close();
@@ -49,7 +48,9 @@ public class RandomNumbers {
         }
 
         if (primes[1] == 0)
-            throw new IllegalArgumentException("The arguments did not render at least 2 primes");
+            throw new IllegalArgumentException("The set of random numbers did not have at least 2 primes");
+            //While an Illegal Argument Exception is not perfectly descriptive of the Error when this is thrown,
+            //it does convey the point well enough along with the error message for this assignment
 
         return primes;
     }
@@ -66,9 +67,9 @@ public class RandomNumbers {
     }
 
     public static void main(String[] args) throws IOException {
-        String[] vals = { "75", "11", "750" };
+        String[] vals = { "75", "25", "7500" };
         int[] primes = getPrimes(vals);
-        
+
         RSAImpl RSA = new RSAImpl(Integer.toString(primes[0]), Integer.toString(primes[1]));
         System.out.println("Your Public Key is: " + RSA.getExp());
         System.out.println("Your Private Key is: " + RSA.getD());
